@@ -1,0 +1,5 @@
+
+<%=linkTo("<< Back to Posts", pathTo(&PostsController::index))%>
+
+<% output() << MarkDown::process(dm_post.asByteArray(), MarkDown::Format_BlogPost); %>
+

@@ -1,0 +1,28 @@
+
+Intro
+=====
+
+Wexus C++ Library, a high performance C++ library for web application development.
+
+This is a version 2.0 rewrite, designed to utilize the Qt library and 3rd party
+web servers (such as mongoose).
+
+Contact info
+============
+
+Site:
+  http://demko.ca/wexus2/
+
+Source:
+  https://github.com/ademko/wexus2
+
+E-mail:
+  ademko@gmail.com
+
+License
+=======
+
+  Copyright (C) 2011 Aleksander B. Demko
+  This source code is distributed under the MIT license.
+  See the accompanying file LICENSE.MIT.txt for details.
+
