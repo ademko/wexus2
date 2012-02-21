@@ -133,7 +133,7 @@
 /**
   \page wexustutorialpage Wexus Programmer's Tutorial
 
-  This tutorial will quickly cover how to make a quick Wexus app.
+  This tutorial will quickly outline how to make a Wexus app.
   This tutorial was made while building the wexus::UptimeApp application,
   so you can open the source files for that and follow along.
 
@@ -142,7 +142,7 @@
   An application object represents the persistent state
   your application needs between controller calls. Many applications
   don't need to put any additional logic in their application
-  objects, but they provide a handy server when they are needed.
+  objects, but they provide a handy service when they are needed.
 
   Create your application class by deriving from wexus::Application
   You don't need to to implement any of the methods, but you
@@ -152,7 +152,7 @@
   class wexus::UptimeApp : public wexus::Application
   {
     public:
-      /// normal ctor
+      /// default constructor
       UptimeApp(void);
   };
   \endcode
@@ -163,7 +163,7 @@
   You can embed your organizations domain name (in reverse order)
   to help make your name unique.
   
-  See the example:
+  For example:
 
   \code
   static wexus::RegisterApp<wexus::UptimeApp> r1("ca.demko.uptime");
@@ -184,8 +184,6 @@
   and destroyed per call.
 
   Here is an example of a declaration of a Controller and one method:
-
-  \section newrendersec Rendering HTML
 
   \code
   class wexus::UptimeController : public wexus::Controller
@@ -214,13 +212,14 @@
   \endcode
 
   We can now compile and run the application. Simply:
-   - Simply make an app.ini file that loads
+   - Make an app.ini that will tell the wexusserver application what to load
+     (the contents of this app.ini are below).
    - Run "wexusserver dir", where dir is the directory containing the app.ini. It could be
      "." (the current directory).
    - Load http://localhost:8080/home/index in your web browser.
-   - Alternatively, Load http://localhost:8080/home This works because "index"
+   - Alternatively, load http://localhost:8080/home This works because "index"
      is the default action of any controller.
-   - Alternatively, Load http://localhost:8080/ This works because "home"
+   - Alternatively, load http://localhost:8080/ This works because "home"
      is the default controller of an application
 
   Here is the app.ini
@@ -229,5 +228,9 @@
   [myappinstance]
   app = ca.demko.uptime
   \endcode
+
+  \section newrendersec Rendering HTML
+
+  (yet to be written)
 
  */
