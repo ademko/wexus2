@@ -66,6 +66,8 @@ Context::~Context()
 
 Context * Context::threadInstance(void)
 {
+  assert(Storage.localData() && "[this thread lacks a Context instance]");
+
   Context *ret = *(Storage.localData());
 
   assert(ret);

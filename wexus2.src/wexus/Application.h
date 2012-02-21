@@ -93,10 +93,11 @@ class wexus::Application
 
     /**
      * A enhanced handleApplicationRequest() call from the wexus::Site to wexus::Application.
-     * filteredRequest contains just the action call. It always starts with atleast a /
-     *
+     * This implements the controll-handler system.
      * This method is not typically overriden, but can be if you want to layer over the
      * default controller-handler system.
+     *
+     * filteredRequest contains just the action call. It always starts with atleast a /
      *
      * @author Aleksander Demko
      */ 
