@@ -109,6 +109,7 @@ ADD_EXECUTABLE(wexusserver
 #helper apps
     ${THIS_PATH}/wexus/RedirectApp.cpp
     ${THIS_PATH}/wexus/FileApp.cpp
+    ${THIS_PATH}/wexus/UptimeApp.cpp
 
 #blogapp
     ${THIS_PATH}/blogapp/BlogApp.cpp
