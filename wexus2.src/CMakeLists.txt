@@ -48,25 +48,12 @@ ENDIF(WIN32)
 
 FIND_PACKAGE(Qt4)
 SET(QT_USE_QTXML 1)
+SET(QT_DONT_USE_QTGUI 1)    # don't need the GUI (yet)
 SET(QT_USE_QTSQL 1)    # for wexus ORM
 SET(QT_USE_QTMAIN 1)   # dont forget to add WIN32 to ADD_EXECUTABLE
 
 INCLUDE(${QT_USE_FILE})
 INCLUDE_DIRECTORIES(${CMAKE_BINARY_DIR}) #the UI generator puts ui_*.h files here
-
-#
-# sqlite3
-#
-
-FIND_LIBRARY(SQLITE3_LIBRARY sqlite3)
-
-SET(SQLITE3_SRC_DIR "" CACHE PATH "The directory of sqlite3.c and sqlite3.h, an alternative to SQLITE3_LIBRARY")
-
-
-IF(SQLITE3_SRC_DIR)
-INCLUDE_DIRECTORIES(${SQLITE3_SRC_DIR})
-SET(SOURCES ${SOURCES} ${SQLITE3_SRC_DIR}/sqlite3.c)
-ENDIF(SQLITE3_SRC_DIR)
 
 IF(WIN32 AND BUILD_SHARED_LIBS)
 # under windows, libhydra is always static
