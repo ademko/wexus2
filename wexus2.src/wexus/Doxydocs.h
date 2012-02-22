@@ -234,3 +234,43 @@
   (yet to be written)
 
  */
+
+/**
+  \page wexusbuildingpage Wexus Compiling Instructions
+
+  Wexus requires QT4 and CMake. You'll need git to get the sources.
+
+  First, check out wexus2 from git, then create a build directory
+  under that:
+
+  \code
+  git clone <GITURL>
+  cd wexus2
+  mkdir build
+  cd build
+  \endcode
+
+  Now, run cmake and configure wexus. Alternatively, you
+  can run ccmake (for a console interface) or cmake-gui
+  (for a graphical one).
+
+  \code
+  cmake ../wexus2.src
+  \endcode
+
+  Finally, compile wexus. Note first you can only build
+  the wexusmake utility. With this utility you generate
+  some files and then run cmake again, to build wexusserver:
+
+  \code
+  make
+  ./wexusmake ../wexus2.src
+  cmake ../wexus2.src
+  make
+  \endcode
+
+  You should now have two executables: wexusmake (the programmers
+  utility) and wexusserver (a command line web server)
+
+ */
+
