@@ -832,6 +832,11 @@ retry_c:
                                 break;
                               }
       case Link_Start: {
+                         if (c == ' ') {
+                           para_buf += '[';
+                           state = link_returnstate;
+                           break;
+                         }
                          link_havetwoparen = c == '[';
                          state = Link_Processing;
                          if (link_havetwoparen)
