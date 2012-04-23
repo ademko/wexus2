@@ -8,6 +8,7 @@
 #include <wexus/FileApp.h>
 
 #include <QDebug>
+#include <QFileInfo>
 
 #include <wexus/FileHTTPHandler.h>
 
@@ -52,7 +53,16 @@ void FileApp::init(const QVariantMap &settings)
     int flags = 0;
     if (settings.contains(flagskey = "options" + QString::number(i)))
       flags = parseFileHTTPHandlerFlags(settings.value(flagskey).toString());
-    dm_dirs.append(DirFlags(appdir + "/" + settings.value(key).toString(), flags));
+    QString thisdir = settings.value(key).toString();
+
+    if (thisdir.isEmpty())
+      throw HTTPServer::Exception("FileApp: error in .ini file, empty string for: " + key);
+
+    if (QFileInfo(thisdir).isAbsolute())
+      dm_dirs.append(DirFlags(thisdir, flags));
+    else
+      dm_dirs.append(DirFlags(appdir + "/" + thisdir, flags));
+
     ++i;
   }
   if (dm_dirs.isEmpty())
