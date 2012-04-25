@@ -247,7 +247,7 @@ qDebug() << "MongooseServer::callback handling: " << req.request();
     QDateTime now(QDateTime::currentDateTime());
 
 qDebug() << now.toString() << "what()" << e.what();
-    ErrorHTTPHandler("MongooseServer: std::exception @" + now.toString()).handleRequest(req, rep);
+    ErrorHTTPHandler("MongooseServer: std::exception @" + now.toString() + " (see console output for more information)").handleRequest(req, rep);
   }
 
   return here;  // always returning non-null to show that ive handled the request

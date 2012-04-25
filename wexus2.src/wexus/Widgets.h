@@ -79,6 +79,8 @@ namespace wexus
    * Returns the HTML code for a link to rawurl with the given
    * description.
    *
+   * You can build this url with pathTo(), etc.
+   *
    * @author Aleksander Demko
    */ 
   wexus::HTMLString linkTo(const QString &desc, const QString &rawurl);
@@ -86,6 +88,8 @@ namespace wexus
   /**
    * Returns the HTML code for a link to rawurl with the given
    * description.
+   *
+   * You can build this url with pathTo(), etc.
    *
    * HTMLString description version.
    *
@@ -95,6 +99,8 @@ namespace wexus
 
   /**
    * Redirectst the user to the given url.
+   * You can build this url with pathTo(), etc.
+   *
    * This must be called before any output, etc.
    *
    * An empty string (the default) redirects to self. This is a bonus

@@ -16,11 +16,11 @@
 
 using namespace wexus;
 
-ActiveFile::ActiveFile(const QString &dirname, const QRegExp &regexp)
+ActiveFile::ActiveFile(const QString &dirname, const QRegExp &filterre)
   : dm_dirspec(new DirSpec)
 {
   dm_dirspec->dirname = dirname;
-  dm_dirspec->regexp = regexp;
+  dm_dirspec->filterre = filterre;
 }
 
 QVariant ActiveFile::getIDAsVariant(void)
@@ -33,7 +33,7 @@ void ActiveFile::checkFileName(const QString &filename)
   if (filename.isEmpty() || filename.indexOf('/') != -1
       || filename.indexOf('\\') != -1
       || filename[0] == '.'
-      || !dm_dirspec->regexp.exactMatch(filename))
+      || !dm_dirspec->filterre.exactMatch(filename))
     throw AssertException("checkFileName failure");
 }
 
@@ -87,7 +87,7 @@ void ActiveFile::all(bool reverseOrder)
     if (!QFileInfo(fpath).isFile())
       continue;
 
-    if (dm_dirspec->regexp.exactMatch(fname))
+    if (dm_dirspec->filterre.exactMatch(fname))
       ii->filenames.push_back(fname);
   }
 

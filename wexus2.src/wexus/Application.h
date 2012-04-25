@@ -149,7 +149,7 @@ class wexus::Application
         void addMatch(const QString &matchString, const QVariantMap &defaults = QVariantMap());
 
         /**
-         * Adds a bunch of default routes.
+         * Adds a bunch of default routes - mostly for url to controll mapping.
          *
          * @author Aleksander Demko
          */

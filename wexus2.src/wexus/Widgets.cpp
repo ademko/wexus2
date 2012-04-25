@@ -32,6 +32,11 @@ struct prefix {
   prefix(void) : name(0), prev(0) { }
 };
 
+//
+// converts the variantmap of key values into a url encoded string list
+// key values are ignored (like id action controller)
+// the resulting string will always have a leading &
+//
 static void fillString(const prefix *p, const QVariantMap &_map, QString &outs)
 {
   QVariantMap::const_iterator ii=_map.begin(), endii=_map.end();
@@ -46,6 +51,10 @@ static void fillString(const prefix *p, const QVariantMap &_map, QString &outs)
 
       fillString(&subp, asVariantMap(*ii), outs);
     } else {
+      // check for special cases that we skip
+      if (!p && (ii.key() == "id" || ii.key() == "action" || ii.key() == "controller"))
+        continue;
+
       // not a map, insert it using the prefix stack to build proper [] keys
       outs += '&';  // the first & will be removed by the caller
       if (p) {
@@ -59,8 +68,7 @@ static void fillString(const prefix *p, const QVariantMap &_map, QString &outs)
         }
       } else {
         // fast case
-        if (ii.key() != "id")   // dont emit id as thats handled specially
-          outs += ii.key();
+        outs += ii.key();
       }
       outs += '=';
       outs += ii->toString(); // TODO ENCODE
@@ -120,6 +128,15 @@ QString wexus::memberFunctionToUrl(const QString controllertype, const MemberFun
     ret += pidurl + "/";  // TODO ENCODE
 
   ret += cinfo->name + "/"; // TODO ENCODE
+
+  // if we have a _params, quickly peek to see if it has a id field
+  if (idurl.isEmpty() && _params) {
+    assertThrow(_params->type() == QVariant::Map);
+    const QVariantMap &paramsmap = asVariantMap(*_params);
+
+    if (paramsmap.contains("id"))
+      idurl = paramsmap["id"].toString(); // TODO ENCODE
+  }
   
   if (!idurl.isEmpty())
     ret += idurl + "/";
@@ -130,9 +147,6 @@ QString wexus::memberFunctionToUrl(const QString controllertype, const MemberFun
   if (_params) {
     assertThrow(_params->type() == QVariant::Map);
     const QVariantMap &paramsmap = asVariantMap(*_params);
-
-    if (paramsmap.contains("id") && idurl.isEmpty())
-      idurl = paramsmap["id"].toString(); // TODO ENCODE
 
     QString r;
 

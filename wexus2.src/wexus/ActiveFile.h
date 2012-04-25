@@ -47,11 +47,14 @@ class wexus::ActiveFile : public wexus::IDAble
 
   public:
     /**
-     * Constructor
+     * Constructor.
      *
+     * @param dirname the base directory for all the files
+     * @param filterre the filter for which files in dirname are valid
+     *         for eg. QRegExp("*.txt", Qt::CaseInsensitive, QRegExp::Wildcard))
      * @author Aleksander Demko
      */ 
-    ActiveFile(const QString &dirname, const QRegExp &regexp);
+    ActiveFile(const QString &dirname, const QRegExp &filterre);
 
     /// implementation
     virtual QVariant getIDAsVariant(void);
@@ -138,7 +141,7 @@ class wexus::ActiveFile : public wexus::IDAble
     struct DirSpec
     {
       QString dirname;
-      QRegExp regexp;
+      QRegExp filterre;
     };
 
     std::shared_ptr<DirSpec> dm_dirspec;
