@@ -1,0 +1,7 @@
+
+(add a TOC on the left side?)
+
+This is a wiki page:
+
+<% output() << MarkDown::process(dm_page.asByteArray(), MarkDown::Format_BlogPost); %>
+

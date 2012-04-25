@@ -106,6 +106,15 @@ ADD_EXECUTABLE(wexusserver
 #views
     ${THIS_PATH}/blogapp/PostsController/indexHtml.cpp
     ${THIS_PATH}/blogapp/PostsController/showHtml.cpp
+
+#wikiapp
+    ${THIS_PATH}/wikiapp/WikiApp.cpp
+    ${THIS_PATH}/wikiapp/PagesController.cpp
+#models
+    ${THIS_PATH}/wikiapp/Page.cpp
+#views
+    ${THIS_PATH}/wikiapp/PagesController/showHtml.cpp
+    ${THIS_PATH}/wikiapp/PagesController/editHtml.cpp
     )
 
 TARGET_LINK_LIBRARIES(wexusserver ${QT_LIBRARIES})
