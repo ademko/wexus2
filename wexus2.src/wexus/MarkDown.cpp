@@ -525,7 +525,7 @@ ParaContext ParaContext::emitDifference(const ParaContext &next, ParaBuffer &out
     }
 
   if (havearule > 0) {
-//qDebug() << "HAVEARULE";
+//qDebug() << "HAVEARULE" << output.size();
     if (output.isEmpty())
       output.sourceOutput() += "<HR />\n";
     else {
@@ -704,7 +704,7 @@ retry_c:
                                  if (paracontext.isTop(' '))
                                    state = InPara_Basic;
                                  else {
-                                   para_buf.push_back(' ');
+                                   //para_buf.push_back(' ');   // this causes issue with horiz rules
                                    state = InPara_CheckForStyle;// we actually want style and link checking at the start of the line too
                                  }
                                }
