@@ -114,15 +114,32 @@
      url to the \b dest url. The dest url can be relative or
      absolute.
  
- \section cademkoblogapp Blog Host
+ \section cademkoblogapp Blog Page
 
  Type \b ca.demko.blog
 
  A simply web log (blog) server.
 
- This will server all the markdown-formatted \b .txt files in
+ This will server all the markdown-formatted \b txt files in
  the \b appdir as blog entries. The filenames should be of the
  form \b YYYYMM_title.txt or \b YYYYMMDD_title.txt
+
+ See the \link wexusmarkdown \endlink
+ reference for syntax.
+
+ \section cademkowikiapp Wiki Site
+
+ Type \b ca.demko.wiki
+
+ A simple wiki server.
+
+ This will serve all the markdown formatted \b txt  files
+ in the \b appdir as wiki pages.
+ The pages are then editable and old copies are stored
+ in a directory.
+
+ See the \link wexusmarkdown \endlink
+ reference for syntax.
 
  \section cademkouptimeapp Uptime Status
 
@@ -274,3 +291,89 @@
 
  */
 
+/**
+ \page wexusmarkdown Wexus Markdown Reference
+
+ \section titles Titles
+
+ Titles can be implemented using hash marks:
+
+ \verbatim
+# title 1 #
+
+## title 2 ##
+
+### title 3 ###
+ \endverbatim
+
+  You can also use underlines:
+
+  \verbatim
+A title
+===================
+
+2nd title
+-------------------
+  \endverbatim
+
+ \section code Fixed Width Text
+
+ Code/fixed width text needs 4 spaces of margin:
+
+ \verbatim
+    This fixed width code
+    has 4 spaces before it
+ \endverbatim
+
+ \section style Text Styles
+
+ You can use aterixes and underscores to adjust the text style:
+
+ \verbatim
+Text modes: *bold* _italic_
+ \endverbatim
+
+ \section links Links
+
+ Links should be in brackets or double brackets.
+ Use [ space to actually get a [
+
+ \verbatim
+[http://host/file] or [relative_file.txt] or [[http://another/link]]
+ \endverbatim
+
+ \section lists Lists
+
+ Lists are bulleted with asterix.
+
+ \verbatim
+* list item (can also lead with + or -)
+* list item
+(line 2 of this item)
+* list item
+    + sub item (note different list item char) and 4-space leader
+ \endverbatim
+
+
+ \section rules Horizontal Rules
+
+ You can use any of these patterns to insert a horizontal rules:
+
+ \verbatim
+=================
+
+= = = = = = = =
+ \endverbatim
+
+ \section quoting Quoting
+
+ You can quote text (a style of indentation) by using the greater-than sign:
+
+ \verbatim
+
+ > This is quoted
+ > Text.
+
+ \endverbatim
+
+ */
