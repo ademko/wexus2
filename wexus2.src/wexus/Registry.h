@@ -137,6 +137,14 @@ class wexus::Registry
     ActionTypeList dm_actionlist;
 };
 
+/**
+ * This registers T with the Registry singleton.
+ *
+ * Typically you instantiate one of these in your .cpp files and pass the name of the class as the constructor.
+ * For example:
+ *
+ *  static wexus::RegisterApp<blogapp::BlogApp> r1("ca.demko.blog");
+ */
 template <class T> class wexus::RegisterApp
 {
   public:
@@ -148,6 +156,13 @@ template <class T> wexus::RegisterApp<T>::RegisterApp(const char *appname)
   // nothing more to fill out, .name is filled by new
 }
 
+/**
+ * After you register your app with RegisterApp, you'll want
+ * to register atleast one controller with RegisterController.
+ *
+ * You'll then one to register an action on this controller
+ * with RegisterAction
+ */
 template <class APPTYPE, class T> class wexus::RegisterController
 {
   public:
@@ -159,6 +174,9 @@ template <class APPTYPE, class T> wexus::RegisterController<APPTYPE,T>::Register
   // nothing more to fill out, .name is filled by new
 }
 
+/**
+ * Registers an action on a controller.
+ */
 template <class CONTROLLERTYPE, void (CONTROLLERTYPE::*MFN)(void)>
 class wexus::RegisterAction
 {

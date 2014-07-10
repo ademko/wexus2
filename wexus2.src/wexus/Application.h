@@ -144,12 +144,14 @@ class wexus::Application
          * @param defaults the default values for any params. This will be
          * overriden with matched vars, ofcourse.
          *
+         * Include wexus/Varpath for some useful QVariantMap utilities.
+         *
          * @author Aleksander Demko
          */ 
         void addMatch(const QString &matchString, const QVariantMap &defaults = QVariantMap());
 
         /**
-         * Adds a bunch of default routes - mostly for url to controll mapping.
+         * Adds a bunch of default routes - mostly for url to control mapping.
          *
          * @author Aleksander Demko
          */
