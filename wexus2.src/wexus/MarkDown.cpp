@@ -218,7 +218,7 @@ ParaContext ParaContext::parseLineStart(const QByteArray &input, int &index, con
   int lastokindex = index;
   int state=Start;
   char c;
-  int spacecount;
+  int spacecount = 0;
   char lastBulletChar = ' ';
   int prevctx_index = 0;
   char prevctx = 0;

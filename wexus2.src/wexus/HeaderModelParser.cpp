@@ -38,7 +38,7 @@ void HeaderModelParser::parse(QIODevice &input, ModelTokenList &outlist)
 
   {
     CPPTokenList::const_iterator p = cpptoklist.begin(), pe = cpptoklist.end();
-    QByteArray::const_iterator lit_start = ary.end(), lit_end;
+    QByteArray::const_iterator lit_start = ary.end(), lit_end = ary.end();
     //int cs;
     enum {
       looking_for_field,
