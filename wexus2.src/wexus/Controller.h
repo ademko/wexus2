@@ -39,6 +39,8 @@ inline QTextStream & operator <<(QTextStream &o, const QVariant &v) { return o <
 class wexus::ControllerContext
 {
   private:
+    // you do not need access to thie member in handlers, as
+    // you can use the wexus::Context static methods directly.
     wexus::Context &dm_context;   // at the top as this should be initialized before cookies, etc
 
   public:

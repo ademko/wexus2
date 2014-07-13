@@ -79,7 +79,9 @@ class wexus::Application
     void initBasic(const QVariantMap &settings);
 
     /**
-     * Returns the current settings
+     * Returns the current settings for the app.
+     * To get at this in your handler, using the Context::application()
+     * method.
      *
      * Some interesting fields, assigned at boot:
      *   app= the appname of the started class
