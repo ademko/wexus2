@@ -1,17 +1,4 @@
 
-#
-# Projects the want to build on hydra should start their CMakeLists.txt with the following:
-#
-#CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
-#
-#FIND_PATH(HYDRA_SRC_PATH CMakeLists.txt DOC "Directory containing the hydra CMakeLists.txt and source code")
-#IF(NOT HYDRA_SRC_PATH)
-#  MESSAGE(FATAL_ERROR "HYDRA_SRC_PATH must be set")
-#ENDIF(NOT HYDRA_SRC_PATH)
-#INCLUDE(${HYDRA_SRC_PATH}/CMakeLists.txt)
-
-
-
 CMAKE_POLICY(PUSH)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
@@ -62,17 +49,10 @@ INCLUDE(${QT_USE_FILE})
 INCLUDE_DIRECTORIES(${CMAKE_BINARY_DIR}) #the UI generator puts ui_*.h files here
 
 IF(WIN32 AND BUILD_SHARED_LIBS)
-# under windows, libhydra is always static
+# under windows, the library is always static
 # its just simpler that way (no need to export symbols, etc)
 SET(ALWAYS_WIN32_STATIC STATIC)
 ENDIF(WIN32 AND BUILD_SHARED_LIBS)
-
-QT4_WRAP_UI(DESKTOP_UI ${THIS_PATH}/desktop/TagEditorView.ui)
-QT4_WRAP_CPP(DESKTOP_MOC ${THIS_PATH}/desktop/FileList.h ${THIS_PATH}/desktop/MainWindow.h ${THIS_PATH}/desktop/VCRView.h
-    ${THIS_PATH}/desktop/MainImageView.h ${THIS_PATH}/desktop/InfoView.h
-    ${THIS_PATH}/desktop/WideListView.h ${THIS_PATH}/desktop/ListView.h ${THIS_PATH}/desktop/ThumbsView.h
-    ${THIS_PATH}/desktop/QueryView.h ${THIS_PATH}/desktop/SearchView.h ${THIS_PATH}/desktop/ShuffleView.h ${THIS_PATH}/desktop/TagSelectView.h
-    ${THIS_PATH}/desktop/TagEditorView.h ${THIS_PATH}/desktop/DirView.h)
 
 INCLUDE_DIRECTORIES(${THIS_PATH})
 
